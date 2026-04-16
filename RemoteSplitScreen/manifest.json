@@ -1,0 +1,10 @@
+﻿{
+    "Name": "RemoteSplitScreen",
+    "Author": "void (Cooperly)",
+    "Version": "1.0.0",
+    "Description": "Allows non-host players in online co-op to create split-screen players.",
+    "UniqueID": "RemoteSplitScreen",
+    "EntryDll": "RemoteSplitScreen.dll",
+    "MinimumApiVersion": "4.0.0",
+    "UpdateKeys": [ "Nexus:<?>" ]
+}
