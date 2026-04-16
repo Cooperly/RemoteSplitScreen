@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current">
+    <PropertyGroup>
+        <!-- Update your Stardew Valley game directory here. -->
+        <GamePath>SOMEWHERE TO "steamapps/common/Stardew Valley"</GamePath>
+    </PropertyGroup>
+</Project>
