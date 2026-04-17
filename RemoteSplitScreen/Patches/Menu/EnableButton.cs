@@ -4,7 +4,7 @@ using RemoteSplitScreen.Helpers;
 using StardewValley;
 using StardewValley.Menus;
 
-namespace RemoteSplitScreen.Patches;
+namespace RemoteSplitScreen.Patches.Menu;
 
 [HarmonyPatch(typeof(OptionsPage), MethodType.Constructor,
 	new Type[] { typeof(int), typeof(int), typeof(int), typeof(int) })]
