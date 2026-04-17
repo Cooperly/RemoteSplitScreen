@@ -9,7 +9,17 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Pathoschild.Stardew.ModBuildConfig" Version="4.4.*"/>
+        <Reference Include="$(GamePath)/GalaxyCSharp.dll" />
+        <Reference Include="$(GamePath)/Steamworks.NET.dll" />
+        
+        <PackageReference Include="Pathoschild.Stardew.ModBuildConfig" Version="4.4.*" />
+        <PackageReference Include="Krafs.Publicizer" Version="2.3.0" />
+        <PackageReference Include="PolySharp" Version="1.15.0" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <Publicize Include="Stardew Valley" />
+        <Publicize Include="System.Private.CoreLib" />
     </ItemGroup>
 
 </Project>

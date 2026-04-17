@@ -129,11 +129,21 @@ public static class Matches {
                     return false;
                 }
 
-                if (it.operand is not Type objectType) {
-                    return false;
+                if (it.operand is Type objectType) {
+                    return objectType == type;
                 }
 
-                return objectType == type;
+                if (it.operand is ConstructorInfo constructorInfo) {
+	                if (constructorInfo.DeclaringType != type) {
+		                return false;
+	                }
+	                
+	                // TODO: Check for constructor parameters.
+
+	                return true;
+                }
+
+                return false;
             }
         );
     }

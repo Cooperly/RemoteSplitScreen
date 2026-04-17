@@ -8,6 +8,10 @@ namespace RemoteSplitScreen.Patches.Menu;
 public class EnableInterface {
 	[HarmonyPrefix]
 	private static bool Prefix(ref bool __result) {
+		if (!Game1.game1.IsMainInstance || GameRunner.instance.gameInstances.Count > GameRunner.instance.GetMaxSimultaneousPlayers()) {
+			return false;
+		}
+		
 		Game1.playSound("bigSelect");
 		Game1.activeClickableMenu = (IClickableMenu) new LocalCoopJoinMenu();
 		
