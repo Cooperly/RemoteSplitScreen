@@ -1,13 +1,13 @@
 using System.Reflection.Emit;
 using HarmonyLib;
+using Microsoft.Xna.Framework;
 using RemoteSplitScreen.Helpers;
 using StardewValley;
 using StardewValley.Menus;
 
 namespace RemoteSplitScreen.Patches.Menu;
 
-[HarmonyPatch(typeof(OptionsPage), MethodType.Constructor,
-	new Type[] { typeof(int), typeof(int), typeof(int), typeof(int) })]
+[HarmonyPatch(typeof(OptionsPage), MethodType.Constructor, typeof(int), typeof(int), typeof(int), typeof(int))]
 public class EnableButton {
 	private static IEnumerable<CodeInstruction> Transpiler(
 		IEnumerable<CodeInstruction> instructions,
