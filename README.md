@@ -1,6 +1,6 @@
 # RemoteSplitScreen
 
-A client-side mod that allows you to create split-screen players in online multiplayer even when you're not the host.
+A client-side mod that allows you to utilize split-screen in online multiplayer, even when you're not the host.
 
 ## Install
 1. Install [SMAPI](https://smapi.io/).
@@ -20,6 +20,8 @@ This mod does not prevent using split-screen in a non-online save or when hostin
 
 ## Notes
 - The host does not need this mod and will see any additional split-screen players as regular online farmhands with the same account identifier (or IP address for LAN) as the primary player.
-	- Some hosts do not like this behaviour or want a single account to take up multiple cabin slots. Please refrain from using this mod if the host does not allow it.
-- Every player in split-screen receives packets separately due to how split-screen internally works. This includes packets from other split-screen players, which have to go to the host and back, which makes delays between split-screen player actions noticeable when looking between screens depending on your latency to the host.
-	- This also means that network usage will be multiplied by the number of split-screen players, but this is not too relevant unless you are on a metered connection.
+  - Some hosts do not like this behaviour or want a single account to take up multiple cabin slots. Please refrain from using this mod if the host does not allow it.
+- Every player in split-screen receives packets (and as such updates to the world and positions) separately due to how split-screen internally works. This includes packets from other split-screen players which have to go to the host and back.
+  - This makes delays between split-screen player actions noticeable when looking between screens or when actions play audio depending on your latency to the host.
+  - This also means that network usage will be multiplied by the number of split-screen players, but this is not too relevant unless you are on a metered connection.
+  - Improvements could possibly be made to sync local players first between all instances, but that gets very complicated and I don't want to mess with that, for now.
