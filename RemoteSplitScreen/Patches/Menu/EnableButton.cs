@@ -1,6 +1,5 @@
 using System.Reflection.Emit;
 using HarmonyLib;
-using Microsoft.Xna.Framework;
 using RemoteSplitScreen.Helpers;
 using StardewValley;
 using StardewValley.Menus;
@@ -28,11 +27,34 @@ public class EnableButton {
 
 		matcher.ThrowIfInvalid(nameof(EnableButton));
 
+		var notMainInstanceLabel = generator.DefineLabel();
+		var storeLabel = generator.DefineLabel();
+
 		matcher.RemoveInstructions(8);
 
 		matcher.InsertAndAdvance(
+			new CodeInstruction(
+				OpCodes.Ldsfld,
+				AccessTools.Field(typeof(Game1), nameof(Game1.game1))),
+			
+			new CodeInstruction(
+				OpCodes.Callvirt,
+				AccessTools.PropertyGetter(typeof(InstanceGame), nameof(InstanceGame.IsMainInstance))),
+			
+			new CodeInstruction(
+				OpCodes.Brfalse_S, notMainInstanceLabel),
+			
 			Instructions.LoadConstant(true),
+			
+			new CodeInstruction(
+				OpCodes.Br_S, storeLabel),
+			
+			new CodeInstruction(
+				OpCodes.Ldc_I4_0)
+					.WithLabels(notMainInstanceLabel),
+			
 			Instructions.StoreLocal(0)
+					.WithLabels(storeLabel)
 		);
 		
 		return matcher.Instructions();
