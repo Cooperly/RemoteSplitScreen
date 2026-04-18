@@ -30,15 +30,12 @@ public class NetworkPatch {
 	}
 
 	private static Client ReplaceConnectionTarget() {
-
-		var isServer = Game1.IsClient.Equals(true);
-		
-		if (isServer) {
+		if (!LobbyHandler.IsRemoteHost) {
 			return new LidgrenClient("localhost");
 		}
 
 		if (LobbyHandler.ClientBuilder == null) {
-			throw new Exception("ClientBuilder is null and the client is not considered the host!");
+			throw new Exception($"{Game1.server} ClientBuilder is null and the client is not connected to a remote host!");
 		}
 		
 		return LobbyHandler.ClientBuilder.CreateClient();

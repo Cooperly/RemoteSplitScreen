@@ -14,6 +14,7 @@ namespace RemoteSplitScreen.Patches;
 public class LobbyHandler {
 	
 	public static IClientBuilder? ClientBuilder;
+	public static bool IsRemoteHost;
 	
 	[HarmonyPatch(typeof(CoopMenu), "<enterIPPressed>b__47_0")]
 	[HarmonyTranspiler]
@@ -71,17 +72,18 @@ public class LobbyHandler {
 		SetGalaxy(lobby);
 	}
 	
-
 	private static void SetLidgren(string address) {
 		ClientBuilder = new LidgrenClientBuilder {
 			Address = address,
 		};
+		IsRemoteHost = true;
 	}
 
 	private static void SetGalaxy(GalaxyID galaxyID) {
 		ClientBuilder = new GalaxyClientBuilder {
 			LobbyID = galaxyID,
 		};
+		IsRemoteHost = true;
 	}
 
 	private static void SetSteam(CSteamID? steamID, GalaxyID? galaxyID) {
@@ -89,6 +91,7 @@ public class LobbyHandler {
 			LobbyID = steamID,
 			GalaxyID = galaxyID
 		};
+		IsRemoteHost = true;
 	}
 
 	public interface IClientBuilder {
