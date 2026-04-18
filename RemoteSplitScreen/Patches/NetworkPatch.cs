@@ -1,6 +1,7 @@
 using System.Reflection.Emit;
 using HarmonyLib;
 using RemoteSplitScreen.Helpers;
+using StardewModdingAPI;
 using StardewValley;
 using StardewValley.Network;
 
@@ -35,7 +36,8 @@ public class NetworkPatch {
 		}
 
 		if (LobbyHandler.ClientBuilder == null) {
-			throw new Exception($"{Game1.server} ClientBuilder is null and the client is not connected to a remote host!");
+			ModEntry.ModMonitor.Log($"Cannot determine platform (LAN/Steam/GOG/Hybrid) as ClientBuilder is null, but the current client is somehow not the host? Please report to the developer.", LogLevel.Error);
+			throw new Exception();
 		}
 		
 		return LobbyHandler.ClientBuilder.CreateClient();

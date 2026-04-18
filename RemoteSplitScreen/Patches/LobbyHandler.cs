@@ -2,6 +2,7 @@ using System.Reflection.Emit;
 using Galaxy.Api;
 using HarmonyLib;
 using RemoteSplitScreen.Helpers;
+using StardewModdingAPI;
 using StardewValley.Menus;
 using StardewValley.Network;
 using StardewValley.SDKs.GogGalaxy;
@@ -127,7 +128,8 @@ public class LobbyHandler {
 				return new SteamNetClient(LobbyID.Value);
 			}
 
-			throw new Exception("Both Steam Lobby ID and Galaxy ID are null!");
+			ModEntry.ModMonitor.Log("Both Steam Lobby ID and Galaxy ID are null! Please report to the developer.", LogLevel.Error);
+			throw new Exception();
 		}
 	}
 }
