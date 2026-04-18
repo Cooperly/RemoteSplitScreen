@@ -2,7 +2,7 @@
     "Name": "RemoteSplitScreen",
     "Author": "void@freewifi.club",
     "Version": "1.0.0",
-    "Description": "A client-side mod that allows non-host players in online co-op to create split-screen players.",
+    "Description": "A client-side mod that allows you to utilize split-screen in online multiplayer, even when you're not the host.",
     "UniqueID": "RemoteSplitScreen",
     "EntryDll": "RemoteSplitScreen.dll",
     "MinimumApiVersion": "4.0.0",
